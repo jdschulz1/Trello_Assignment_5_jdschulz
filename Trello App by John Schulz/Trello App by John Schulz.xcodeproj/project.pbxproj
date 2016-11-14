@@ -12,6 +12,7 @@
 		8438A5011DD9145900BE11AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8438A5001DD9145900BE11AB /* Assets.xcassets */; };
 		8438A5041DD9145900BE11AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8438A5021DD9145900BE11AB /* LaunchScreen.storyboard */; };
 		8438A50C1DD914D300BE11AB /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438A50B1DD914D300BE11AB /* BoardsViewController.swift */; };
+		8438A50E1DD91A3600BE11AB /* TrelloAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438A50D1DD91A3600BE11AB /* TrelloAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8438A5031DD9145900BE11AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8438A5051DD9145900BE11AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8438A50B1DD914D300BE11AB /* BoardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
+		8438A50D1DD91A3600BE11AB /* TrelloAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrelloAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				8438A5021DD9145900BE11AB /* LaunchScreen.storyboard */,
 				8438A5051DD9145900BE11AB /* Info.plist */,
 				8438A50B1DD914D300BE11AB /* BoardsViewController.swift */,
+				8438A50D1DD91A3600BE11AB /* TrelloAPI.swift */,
 			);
 			path = "Trello App by John Schulz";
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8438A50E1DD91A3600BE11AB /* TrelloAPI.swift in Sources */,
 				8438A4FA1DD9145900BE11AB /* AppDelegate.swift in Sources */,
 				8438A50C1DD914D300BE11AB /* BoardsViewController.swift in Sources */,
 			);
