@@ -18,35 +18,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xf4-5y-4hJ">
-                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                            <collectionView multipleTouchEnabled="YES" contentMode="redraw" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xf4-5y-4hJ">
+                                <rect key="frame" x="0.0" y="74" width="600" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="weO-oK-vhQ">
-                                    <size key="itemSize" width="500" height="472"/>
+                                    <size key="itemSize" width="325" height="350"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UICollectionViewCell" id="RcG-s4-MXN">
-                                        <rect key="frame" x="0.0" y="64" width="500" height="472"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="UICollectionViewCell" id="RcG-s4-MXN" customClass="BoardCell" customModule="Trello_App_by_John_Schulz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="105" width="325" height="350"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="472"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="325" height="350"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpB-jC-Uzn">
+                                                    <rect key="frame" x="13" y="3" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BFk-5d-Zxl">
+                                                    <rect key="frame" x="13" y="29" width="300" height="293"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.80174443493150682" colorSpace="deviceWhite"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="30" id="QWI-wl-0Q1">
+                                                        <size key="itemSize" width="400" height="300"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ListCollectionViewCell" id="ZD6-5g-sbN">
+                                                            <rect key="frame" x="0.0" y="-4" width="400" height="300"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <color key="backgroundColor" red="0.69803921568627447" green="0.84313725490196079" blue="1" alpha="0.65616973458904104" colorSpace="deviceRGB"/>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.16580310879999999" green="0.16580310879999999" blue="0.16580310879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="BFk-5d-Zxl" firstAttribute="top" secondItem="jpB-jC-Uzn" secondAttribute="bottom" constant="5" id="8wE-qc-cPY"/>
+                                            <constraint firstItem="jpB-jC-Uzn" firstAttribute="leading" secondItem="RcG-s4-MXN" secondAttribute="leadingMargin" constant="5" id="GGt-MP-gCS"/>
+                                            <constraint firstItem="jpB-jC-Uzn" firstAttribute="top" secondItem="RcG-s4-MXN" secondAttribute="topMargin" constant="-5" id="Gwx-Ux-FWb"/>
+                                            <constraint firstItem="BFk-5d-Zxl" firstAttribute="centerX" secondItem="RcG-s4-MXN" secondAttribute="centerX" id="jot-Mb-GRh"/>
+                                            <constraint firstItem="BFk-5d-Zxl" firstAttribute="leading" secondItem="jpB-jC-Uzn" secondAttribute="leading" id="rOv-cG-laU"/>
+                                            <constraint firstItem="BFk-5d-Zxl" firstAttribute="centerY" secondItem="RcG-s4-MXN" secondAttribute="centerY" id="sU1-pY-gYC"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="boardname" destination="jpB-jC-Uzn" id="R8T-oU-sHk"/>
+                                            <outlet property="listView" destination="BFk-5d-Zxl" id="Azi-Tz-gtP"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xf4-5y-4hJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AUq-Al-InW"/>
-                            <constraint firstItem="Xf4-5y-4hJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="e63-ov-Qtd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xf4-5y-4hJ" secondAttribute="bottom" id="fuk-Ez-1ci"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Xf4-5y-4hJ" secondAttribute="trailing" id="zjV-GP-mof"/>
+                            <constraint firstItem="Xf4-5y-4hJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="JgK-iY-uC5"/>
+                            <constraint firstAttribute="width" secondItem="Xf4-5y-4hJ" secondAttribute="width" id="L52-Kv-TUb"/>
+                            <constraint firstItem="Xf4-5y-4hJ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-30" id="Naf-H2-TaF"/>
+                            <constraint firstItem="Xf4-5y-4hJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UWz-bl-hp6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trello App for iOS by John Schulz" id="cYU-0h-htd"/>

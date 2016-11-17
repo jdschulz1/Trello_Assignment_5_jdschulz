@@ -8,9 +8,21 @@
 
 import UIKit
 
-class BoardCell: NSObject, UICollectionViewDataSource {
-    
+class BoardCell: UICollectionViewCell {
+    @IBOutlet var boardname : UILabel!
     @IBOutlet var listView: UICollectionView!
+    
+    func updateBoard(name: String?, desc: String?, id: String?) {
+        if let bname = name {
+            boardname.text = bname
+        }
+        else {
+            boardname.text = ""
+        }
+    }
+}
+
+class BoardDataSource: NSObject, UICollectionViewDataSource {
     
     var boards = [Board] ()
     
@@ -25,7 +37,10 @@ class BoardCell: NSObject, UICollectionViewDataSource {
         let identifier = "UICollectionViewCell"
         let cell =
             collectionView.dequeueReusableCellWithReuseIdentifier(identifier,
-                                                                  forIndexPath: indexPath)
+                                                                  forIndexPath: indexPath) as! BoardCell
+        
+        let board = boards[indexPath.row]
+        cell.updateBoard(board.name, desc: board.desc, id: board.id)
         
         return cell
     }

@@ -11,7 +11,40 @@ import UIKit
 class ListCell: UICollectionViewCell {
     
     @IBOutlet var cardView: UICollectionView!
+    @IBOutlet var listname : UILabel!
     
+    func updateList(name: String?, desc: String?, id: String?) {
+        if let lname = name {
+            listname.text = lname
+        }
+        else {
+            listname.text = ""
+        }
+    }
+}
+
+class ListDataSource: NSObject, UICollectionViewDataSource {
+    
+    var lists = [List] ()
+    
+    func collectionView(collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return lists.count
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+                        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let identifier = "UICollectionViewCell"
+        let cell =
+            collectionView.dequeueReusableCellWithReuseIdentifier(identifier,
+                                                                  forIndexPath: indexPath) as! ListCell
+        
+        let list = lists[indexPath.row]
+        cell.updateList(list.name, desc: list.desc, id: list.id)
+        
+        return cell
+    }
 }
 
 class List {

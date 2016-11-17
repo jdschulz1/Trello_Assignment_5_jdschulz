@@ -12,7 +12,7 @@ class BoardsViewController: UIViewController {
     
     @IBOutlet var boardView: UICollectionView!
     
-    let boardDataSource = BoardCell()
+    let boardDataSource = BoardDataSource()
     
     let session: NSURLSession = {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -58,12 +58,6 @@ class BoardsViewController: UIViewController {
         getBoards(){
             (boardsResult) -> Void in
             
-//            switch boardsResult {
-//            case let .Success(boards):
-//                print("Successfully found \(boards.count) boards.")
-//            case let .Failure(error):
-//                print("Error fetching boards: \(error)")
-//            }
             NSOperationQueue.mainQueue().addOperationWithBlock() {
                 switch boardsResult {
                 case let .Success(boards):
@@ -76,5 +70,21 @@ class BoardsViewController: UIViewController {
                 self.boardView.reloadSections(NSIndexSet(index: 0))
             }
         }
+        
+//        getLists(self.boardDataSource.boards.){
+//            (listsResult) -> Void in
+//            
+//            NSOperationQueue.mainQueue().addOperationWithBlock() {
+//                switch listsResult {
+//                case let .Success(lists):
+//                    print("Successfully found \(lists.count) lists.")
+//                    self.listDataSource.lists = lists
+//                case let .Failure(error):
+//                    self.listDataSource.lists.removeAll()
+//                    print("Error fetching lists: \(error)")
+//                }
+//                self.listView.reloadSections(NSIndexSet(index: 0))
+//            }
+//        }
     }
 }
