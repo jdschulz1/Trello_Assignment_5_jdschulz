@@ -8,9 +8,7 @@
 
 import UIKit
 
-class ListsViewController: UIViewController {
-    
-    @IBOutlet var listView: UICollectionView!
+class ListsViewController: UICollectionViewController {
     
     let listDataSource = ListDataSource()
     var boardid: String!
@@ -26,25 +24,6 @@ class ListsViewController: UIViewController {
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             
-            if let jsonData = data {
-                do {
-                    let jsonObject: AnyObject
-                        = try NSJSONSerialization.JSONObjectWithData(jsonData,
-                                                                     options: [])
-                    print(jsonObject[0])
-                    print(jsonObject[1])
-                    print(jsonObject[2])
-                }
-                catch let error {
-                    print("Error creating JSON object: \(error)")
-                }
-            }
-            else if let requestError = error {
-                print("Error fetching Trello Lists: \(requestError)")
-            }
-            else {
-                print("Unexpected error with the request")
-            }
             let result = processGetListsRequest(data: data, error: error)
             completion(result)
         }
@@ -54,7 +33,7 @@ class ListsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        listView.dataSource = listDataSource
+        collectionView!.dataSource = listDataSource
     
         getLists(boardid: self.boardid){
             (listsResult) -> Void in
@@ -68,8 +47,23 @@ class ListsViewController: UIViewController {
                     self.listDataSource.lists.removeAll()
                     print("Error fetching lists: \(error)")
                 }
-                self.listView.reloadSections(NSIndexSet(index: 0))
+                self.collectionView!.reloadSections(NSIndexSet(index: 0))
             }
+        }
+    }
+    
+    //UICollectionViewDelegate
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cardSegue = "ShowCards"
+        let list = listDataSource.lists[indexPath.row]
+        self.performSegueWithIdentifier(cardSegue, sender: list)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowCards" {
+            let cardsViewController = segue.destinationViewController as! CardsViewController
+            let list = sender as! List
+            cardsViewController.listid = list.id
         }
     }
 }

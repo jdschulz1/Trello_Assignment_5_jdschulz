@@ -8,9 +8,8 @@
 
 import UIKit
 
-class BoardsViewController: UIViewController {
+class BoardsViewController: UICollectionViewController {
     
-    @IBOutlet var boardView: UICollectionView!
     
     let boardDataSource = BoardDataSource()
     
@@ -53,7 +52,7 @@ class BoardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        boardView.dataSource = boardDataSource
+        self.collectionView!.dataSource = boardDataSource
         
         getBoards(){
             (boardsResult) -> Void in
@@ -67,9 +66,23 @@ class BoardsViewController: UIViewController {
                     self.boardDataSource.boards.removeAll()
                     print("Error fetching boards: \(error)")
                 }
-                self.boardView.reloadSections(NSIndexSet(index: 0))
+                self.collectionView!.reloadSections(NSIndexSet(index: 0))
             }
         }
     }
+    
+    //UICollectionViewDelegate
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let listSegue = "ShowLists"
+        let board = boardDataSource.boards[indexPath.row]
+        self.performSegueWithIdentifier(listSegue, sender: board)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowLists" {
+            let listsViewController = segue.destinationViewController as! ListsViewController
+            let board = sender as! Board
+            listsViewController.boardid = board.id
+        }
+    }
 }
-

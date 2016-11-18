@@ -1,141 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bEr-82-NHY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iFh-op-qSy">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--My Trello Boards-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Trello API Boards-->
+        <scene sceneID="dX3-It-Swq">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BoardsViewController" customModule="Trello_App_by_John_Schulz" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <collectionViewController id="914-xp-PIC" userLabel="Trello API Boards" customClass="BoardsViewController" customModule="Trello_App_by_John_Schulz" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="yRt-4M-7AL" userLabel="Board View">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView multipleTouchEnabled="YES" contentMode="redraw" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xf4-5y-4hJ">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="weO-oK-vhQ">
-                                    <size key="itemSize" width="325" height="350"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="UICollectionViewCell" id="RcG-s4-MXN" customClass="BoardCell" customModule="Trello_App_by_John_Schulz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="125" width="325" height="350"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="325" height="350"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpB-jC-Uzn">
-                                                    <rect key="frame" x="141" y="164" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" red="0.16580310879999999" green="0.16580310879999999" blue="0.16580310879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="jpB-jC-Uzn" firstAttribute="centerY" secondItem="RcG-s4-MXN" secondAttribute="centerY" id="2jK-6d-2NV"/>
-                                            <constraint firstItem="jpB-jC-Uzn" firstAttribute="centerX" secondItem="RcG-s4-MXN" secondAttribute="centerX" id="ZX8-qY-KUc"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="boardname" destination="jpB-jC-Uzn" id="R8T-oU-sHk"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Xf4-5y-4hJ" secondAttribute="trailing" id="3Go-Qo-8WD"/>
-                            <constraint firstItem="Xf4-5y-4hJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DAj-R3-ZLd"/>
-                            <constraint firstItem="Xf4-5y-4hJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Hju-29-kjP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xf4-5y-4hJ" secondAttribute="bottom" id="TCm-07-SA3"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="My Trello Boards" id="cYU-0h-htd"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1KG-Ld-JjI">
+                            <size key="itemSize" width="350" height="75"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="UICollectionViewCell" id="RcG-s4-MXN" customClass="BoardCell" customModule="Trello_App_by_John_Schulz" customModuleProvider="target">
+                                <rect key="frame" x="125" y="64" width="350" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="75"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpB-jC-Uzn">
+                                            <rect key="frame" x="154" y="27" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.16580310879999999" green="0.16580310879999999" blue="0.16580310879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="jpB-jC-Uzn" firstAttribute="centerY" secondItem="RcG-s4-MXN" secondAttribute="centerY" id="2jK-6d-2NV"/>
+                                    <constraint firstItem="jpB-jC-Uzn" firstAttribute="centerX" secondItem="RcG-s4-MXN" secondAttribute="centerX" id="ZX8-qY-KUc"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="boardname" destination="jpB-jC-Uzn" id="R8T-oU-sHk"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="914-xp-PIC" id="rDQ-OE-16A"/>
+                            <outlet property="delegate" destination="914-xp-PIC" id="D8a-co-wMF"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="My Trello Boards" id="Gl3-8l-tFo"/>
                     <connections>
-                        <outlet property="boardView" destination="Xf4-5y-4hJ" id="uT1-ip-lm6"/>
-                        <segue destination="66e-gl-L3P" kind="show" identifier="ShowListCollectionView" id="133-jZ-2KP"/>
+                        <outlet property="collectionView" destination="yRt-4M-7AL" id="gQX-zf-R9F"/>
+                        <segue destination="eKv-eY-Yft" kind="show" identifier="ShowLists" id="Dn8-tC-iz8"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qJv-mg-mSU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1157" y="331"/>
+            <point key="canvasLocation" x="1787" y="313"/>
         </scene>
         <!--Lists View Controller-->
-        <scene sceneID="9yh-1W-9Rr">
+        <scene sceneID="kLA-js-xEe">
             <objects>
-                <viewController id="66e-gl-L3P" customClass="ListsViewController" customModule="Trello_App_by_John_Schulz" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AIy-vq-Rln"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZuM-jt-zUg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rdF-YE-tEO">
+                <collectionViewController id="eKv-eY-Yft" customClass="ListsViewController" customModule="Trello_App_by_John_Schulz" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" id="uF7-JM-UOd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iN8-kk-AvL">
+                            <size key="itemSize" width="350" height="75"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UICollectionViewCell" id="xWz-xt-tnq" customClass="ListCell" customModule="Trello_App_by_John_Schulz" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="350" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="75"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRE-Te-OoS">
+                                            <rect key="frame" x="154" y="27" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.77204623287671248" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="aRE-Te-OoS" firstAttribute="centerX" secondItem="xWz-xt-tnq" secondAttribute="centerX" id="CKV-B2-vlF"/>
+                                    <constraint firstItem="aRE-Te-OoS" firstAttribute="centerY" secondItem="xWz-xt-tnq" secondAttribute="centerY" id="TD8-NW-e8q"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="listname" destination="aRE-Te-OoS" id="Fmp-Ny-qHT"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="eKv-eY-Yft" id="FEj-w5-qyu"/>
+                            <outlet property="delegate" destination="eKv-eY-Yft" id="CIb-ep-6Qk"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="collectionView" destination="uF7-JM-UOd" id="ZgG-Tg-OsE"/>
+                        <segue destination="2TL-kV-Lm3" kind="show" identifier="ShowCards" id="TgX-nw-OPR"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fAl-Y0-iPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="CardViewCell" id="CO8-dK-ICO" customClass="CardCell" customModule="Trello_App_by_John_Schulz" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yW8-CA-EEj">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="E0o-i4-6Pj">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ListViewCell" id="FGG-CV-OE7">
-                                        <rect key="frame" x="0.0" y="64" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpY-8J-9NW">
+                                <rect key="frame" x="79" y="8" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4W-4V-Ypb">
+                                <rect key="frame" x="79" y="64" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="yW8-CA-EEj" firstAttribute="leading" secondItem="rdF-YE-tEO" secondAttribute="leading" id="6ij-Lh-BeT"/>
-                            <constraint firstItem="yW8-CA-EEj" firstAttribute="top" secondItem="AIy-vq-Rln" secondAttribute="bottom" id="FWJ-ma-giZ"/>
-                            <constraint firstItem="ZuM-jt-zUg" firstAttribute="top" secondItem="yW8-CA-EEj" secondAttribute="bottom" id="S75-4r-eG9"/>
-                            <constraint firstAttribute="trailing" secondItem="yW8-CA-EEj" secondAttribute="trailing" id="djJ-o4-5Vd"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GZT-6b-7rf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <color key="backgroundColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="0.65616973460000005" colorSpace="deviceRGB"/>
+                    <connections>
+                        <outlet property="carddesc" destination="Z4W-4V-Ypb" id="vfx-df-hOY"/>
+                        <outlet property="cardname" destination="xpY-8J-9NW" id="ueJ-e5-gc5"/>
+                    </connections>
+                </collectionViewCell>
+                <collectionViewFlowLayout minimumLineSpacing="10" minimumInteritemSpacing="10" id="pU9-46-g8k">
+                    <size key="itemSize" width="200" height="150"/>
+                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </collectionViewFlowLayout>
             </objects>
-            <point key="canvasLocation" x="1824" y="331"/>
+            <point key="canvasLocation" x="2443" y="293"/>
+        </scene>
+        <!--Cards View Controller-->
+        <scene sceneID="8ra-Ux-eph">
+            <objects>
+                <collectionViewController id="2TL-kV-Lm3" customClass="CardsViewController" customModule="Trello_App_by_John_Schulz" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="pJz-Yc-VEx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y5O-FT-h1H">
+                            <size key="itemSize" width="325" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="UICollectionViewCell" id="re6-fB-G2X" customClass="CardCell" customModule="Trello_App_by_John_Schulz" customModuleProvider="target">
+                                <rect key="frame" x="138" y="64" width="325" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="325" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKC-sX-EZB">
+                                            <rect key="frame" x="8" y="92" width="309" height="100"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1u-Xs-xtc">
+                                            <rect key="frame" x="8" y="8" width="309" height="76"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="76" id="jdP-tP-Arh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="0.65616973460000005" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstItem="h1u-Xs-xtc" firstAttribute="top" secondItem="re6-fB-G2X" secondAttribute="topMargin" id="E4h-TT-xUs"/>
+                                    <constraint firstItem="h1u-Xs-xtc" firstAttribute="trailing" secondItem="re6-fB-G2X" secondAttribute="trailingMargin" id="Pdd-a4-EJq"/>
+                                    <constraint firstItem="h1u-Xs-xtc" firstAttribute="leading" secondItem="re6-fB-G2X" secondAttribute="leadingMargin" id="Ppc-Eb-nTg"/>
+                                    <constraint firstItem="h1u-Xs-xtc" firstAttribute="leading" secondItem="dKC-sX-EZB" secondAttribute="leading" id="bcV-jL-FAl"/>
+                                    <constraint firstItem="h1u-Xs-xtc" firstAttribute="trailing" secondItem="dKC-sX-EZB" secondAttribute="trailing" id="gcT-TT-FFu"/>
+                                    <constraint firstItem="dKC-sX-EZB" firstAttribute="bottom" secondItem="re6-fB-G2X" secondAttribute="bottomMargin" id="mYg-B9-BfG"/>
+                                    <constraint firstItem="dKC-sX-EZB" firstAttribute="top" secondItem="h1u-Xs-xtc" secondAttribute="bottom" constant="8" symbolic="YES" id="yfr-aK-pRB"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="carddesc" destination="dKC-sX-EZB" id="jXO-Wo-gUW"/>
+                                    <outlet property="cardname" destination="h1u-Xs-xtc" id="gc4-d6-Zru"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="2TL-kV-Lm3" id="Qd0-BD-JZW"/>
+                            <outlet property="delegate" destination="2TL-kV-Lm3" id="b9K-w1-Thv"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rFM-tR-4uV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3106" y="293"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="LaF-vp-vFf">
+        <scene sceneID="qtl-NG-GSG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bEr-82-NHY" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iFh-op-qSy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UfA-5C-r3a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I28-tU-l8g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DQ0-0w-Xbp"/>
+                        <segue destination="914-xp-PIC" kind="relationship" relationship="rootViewController" id="XW8-Te-8Bn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Oq6-gi-eaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0H0-45-jjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="444"/>
+            <point key="canvasLocation" x="975" y="313"/>
         </scene>
     </scenes>
 </document>

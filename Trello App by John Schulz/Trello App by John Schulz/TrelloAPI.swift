@@ -170,9 +170,7 @@ struct TrelloAPI {
                 = try NSJSONSerialization.JSONObjectWithData(data, options: [])
             
             guard let
-                jsonDictionary = jsonObject as? [NSObject:AnyObject],
-                lists = jsonDictionary["lists"] as? [String:AnyObject],
-                listsArray = lists["list"] as? [[String:AnyObject]] else {
+                listsArray = jsonObject as? [[String:AnyObject]] else {
                     
                     // The JSON structure doesn't match our expectations
                     return .Failure(TrelloError.InvalidJSONData)
@@ -200,14 +198,13 @@ struct TrelloAPI {
     private static func listFromJSONObject(json: [String : AnyObject]) -> List? {
         guard let
             id = json["id"] as? String,
-            name = json["name"] as? String,
-            desc = json["desc"] as? String else {
+            name = json["name"] as? String else {
                 
                 // Don't have enough information to construct a List
                 return nil
         }
         
-        return List(id: id, name: name, desc: desc)
+        return List(id: id, name: name)
     }
     
     static func cardsFromJSONData(data: NSData) -> CardResult {
@@ -216,9 +213,7 @@ struct TrelloAPI {
                 = try NSJSONSerialization.JSONObjectWithData(data, options: [])
             
             guard let
-                jsonDictionary = jsonObject as? [NSObject:AnyObject],
-                cards = jsonDictionary["cards"] as? [String:AnyObject],
-                cardsArray = cards["card"] as? [[String:AnyObject]] else {
+                cardsArray = jsonObject as? [[String:AnyObject]] else {
                     
                     // The JSON structure doesn't match our expectations
                     return .Failure(TrelloError.InvalidJSONData)

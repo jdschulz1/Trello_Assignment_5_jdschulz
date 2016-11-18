@@ -10,7 +10,6 @@ import UIKit
 
 class ListCell: UICollectionViewCell {
     
-    @IBOutlet var cardView: UICollectionView!
     @IBOutlet var listname : UILabel!
     
     func updateList(name: String?) {
@@ -50,11 +49,9 @@ class ListDataSource: NSObject, UICollectionViewDataSource {
 class List {
     let id: String
     let name: String
-    let desc: String
     
-    init(id: String, name: String, desc: String) {
+    init(id: String, name: String) {
         self.id = id
         self.name = name
-        self.desc = desc
     }
 }
