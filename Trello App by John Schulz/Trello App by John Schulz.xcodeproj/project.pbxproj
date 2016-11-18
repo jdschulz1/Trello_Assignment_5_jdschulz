@@ -13,6 +13,7 @@
 		8438A5041DD9145900BE11AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8438A5021DD9145900BE11AB /* LaunchScreen.storyboard */; };
 		8438A50C1DD914D300BE11AB /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438A50B1DD914D300BE11AB /* BoardsViewController.swift */; };
 		8438A50E1DD91A3600BE11AB /* TrelloAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438A50D1DD91A3600BE11AB /* TrelloAPI.swift */; };
+		84749CC11DDE7B6C0097733D /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84749CC01DDE7B6C0097733D /* ListsViewController.swift */; };
 		84FC72461DD93D7800F24C38 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC72451DD93D7800F24C38 /* BoardCell.swift */; };
 		84FC72481DD93DAF00F24C38 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC72471DD93DAF00F24C38 /* ListCell.swift */; };
 		84FC724A1DD93DC200F24C38 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC72491DD93DC200F24C38 /* CardCell.swift */; };
@@ -27,6 +28,7 @@
 		8438A5051DD9145900BE11AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8438A50B1DD914D300BE11AB /* BoardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
 		8438A50D1DD91A3600BE11AB /* TrelloAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrelloAPI.swift; sourceTree = "<group>"; };
+		84749CC01DDE7B6C0097733D /* ListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
 		84FC72451DD93D7800F24C38 /* BoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 		84FC72471DD93DAF00F24C38 /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		84FC72491DD93DC200F24C38 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				8438A5021DD9145900BE11AB /* LaunchScreen.storyboard */,
 				8438A5051DD9145900BE11AB /* Info.plist */,
 				8438A50B1DD914D300BE11AB /* BoardsViewController.swift */,
+				84749CC01DDE7B6C0097733D /* ListsViewController.swift */,
 				8438A50D1DD91A3600BE11AB /* TrelloAPI.swift */,
 				84FC72451DD93D7800F24C38 /* BoardCell.swift */,
 				84FC72471DD93DAF00F24C38 /* ListCell.swift */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84749CC11DDE7B6C0097733D /* ListsViewController.swift in Sources */,
 				8438A50E1DD91A3600BE11AB /* TrelloAPI.swift in Sources */,
 				84FC724A1DD93DC200F24C38 /* CardCell.swift in Sources */,
 				8438A4FA1DD9145900BE11AB /* AppDelegate.swift in Sources */,

@@ -70,21 +70,6 @@ class BoardsViewController: UIViewController {
                 self.boardView.reloadSections(NSIndexSet(index: 0))
             }
         }
-        
-//        getLists(self.boardDataSource.boards.){
-//            (listsResult) -> Void in
-//            
-//            NSOperationQueue.mainQueue().addOperationWithBlock() {
-//                switch listsResult {
-//                case let .Success(lists):
-//                    print("Successfully found \(lists.count) lists.")
-//                    self.listDataSource.lists = lists
-//                case let .Failure(error):
-//                    self.listDataSource.lists.removeAll()
-//                    print("Error fetching lists: \(error)")
-//                }
-//                self.listView.reloadSections(NSIndexSet(index: 0))
-//            }
-//        }
     }
 }
+

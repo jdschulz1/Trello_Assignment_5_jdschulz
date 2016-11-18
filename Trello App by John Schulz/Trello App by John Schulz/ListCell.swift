@@ -13,7 +13,7 @@ class ListCell: UICollectionViewCell {
     @IBOutlet var cardView: UICollectionView!
     @IBOutlet var listname : UILabel!
     
-    func updateList(name: String?, desc: String?, id: String?) {
+    func updateList(name: String?) {
         if let lname = name {
             listname.text = lname
         }
@@ -41,7 +41,7 @@ class ListDataSource: NSObject, UICollectionViewDataSource {
                                                                   forIndexPath: indexPath) as! ListCell
         
         let list = lists[indexPath.row]
-        cell.updateList(list.name, desc: list.desc, id: list.id)
+        cell.updateList(list.name)
         
         return cell
     }

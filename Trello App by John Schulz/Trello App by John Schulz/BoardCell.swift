@@ -10,9 +10,9 @@ import UIKit
 
 class BoardCell: UICollectionViewCell {
     @IBOutlet var boardname : UILabel!
-    @IBOutlet var listView: UICollectionView!
+    @IBOutlet var boardlistView: UICollectionView!
     
-    func updateBoard(name: String?, desc: String?, id: String?) {
+    func updateBoard(name: String?) {
         if let bname = name {
             boardname.text = bname
         }
@@ -25,6 +25,8 @@ class BoardCell: UICollectionViewCell {
 class BoardDataSource: NSObject, UICollectionViewDataSource {
     
     var boards = [Board] ()
+    var lists = [List] ()
+    var listDataSource = ListDataSource()
     
     func collectionView(collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -40,7 +42,26 @@ class BoardDataSource: NSObject, UICollectionViewDataSource {
                                                                   forIndexPath: indexPath) as! BoardCell
         
         let board = boards[indexPath.row]
-        cell.updateBoard(board.name, desc: board.desc, id: board.id)
+        cell.updateBoard(board.name)
+        
+        
+//        cell.boardlistView.dataSource = listDataSource
+//        
+//                getLists(boardid: board.id){
+//                    (listsResult) -> Void in
+//        
+//                    NSOperationQueue.mainQueue().addOperationWithBlock() {
+//                        switch listsResult {
+//                        case let .Success(lists):
+//                            print("Successfully found \(lists.count) lists.")
+//                            self.listDataSource.lists = lists
+//                        case let .Failure(error):
+//                            self.listDataSource.lists.removeAll()
+//                            print("Error fetching lists: \(error)")
+//                        }
+//                        cell.boardlistView.reloadSections(NSIndexSet(index: 0))
+//                    }
+//                }
         
         return cell
     }
@@ -56,4 +77,40 @@ class Board {
         self.name = name
         self.desc = desc
     }
+}
+
+let session: NSURLSession = {
+    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+    return NSURLSession(configuration: config)
+}()
+
+func getLists(boardid boardid: String, completion: (ListResult) -> Void) {
+    let url = TrelloAPI.allListsForBoard(boardid: boardid)
+    let request = NSURLRequest(URL: url)
+    let task = session.dataTaskWithRequest(request) {
+        (data, response, error) -> Void in
+
+        if let jsonData = data {
+            do {
+                let jsonObject: AnyObject
+                    = try NSJSONSerialization.JSONObjectWithData(jsonData,
+                                                                 options: [])
+                print(jsonObject[0])
+                print(jsonObject[1])
+                print(jsonObject[2])
+            }
+            catch let error {
+                print("Error creating JSON object: \(error)")
+            }
+        }
+        else if let requestError = error {
+            print("Error fetching Trello Lists: \(requestError)")
+        }
+        else {
+            print("Unexpected error with the request")
+        }
+        let result = processGetListsRequest(data: data, error: error)
+        completion(result)
+    }
+    task.resume()
 }
