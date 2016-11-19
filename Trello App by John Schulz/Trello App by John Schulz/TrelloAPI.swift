@@ -34,17 +34,46 @@ func processGetListsRequest(data data: NSData?, error: NSError?) -> ListResult {
     return TrelloAPI.listsFromJSONData(jsonData)
 }
 
-enum CardResult {
+enum CardsResult {
     case Success([Card])
     case Failure(ErrorType)
 }
 
-func processGetCardsRequest(data data: NSData?, error: NSError?) -> CardResult {
+enum CardResult {
+    case Success(Card)
+    case Failure(ErrorType)
+}
+
+func processGetCardsRequest(data data: NSData?, error: NSError?) -> CardsResult {
     guard let jsonData = data else {
         return .Failure(error!)
     }
     
     return TrelloAPI.cardsFromJSONData(jsonData)
+}
+
+func processEditCardRequest(data data: NSData?, error: NSError?) -> CardResult {
+    guard let jsonData = data else {
+        return .Failure(error!)
+    }
+    
+    return TrelloAPI.cardFromJSONData(jsonData)
+}
+
+func processDeleteCardRequest(data data: NSData?, error: NSError?) -> CardResult {
+    guard let jsonData = data else {
+        return .Failure(error!)
+    }
+    
+    return TrelloAPI.cardFromJSONData(jsonData)
+}
+
+func processCreateCardRequest(data data: NSData?, error: NSError?) -> CardResult {
+    guard let jsonData = data else {
+        return .Failure(error!)
+    }
+    
+    return TrelloAPI.cardFromJSONData(jsonData)
 }
 
 enum TrelloError: ErrorType {
@@ -64,7 +93,6 @@ struct TrelloAPI {
         var queryItems = [NSURLQueryItem]()
         
         let baseParams = [
-            "fields": "name,desc",
             "key": APIKey,
             "token": token
         ]
@@ -87,32 +115,32 @@ struct TrelloAPI {
     
     static func allBoardsURL() -> NSURL {
         return trelloURL(method: "members/johnschulz9/boards",
-                         parameters: [:])
+                         parameters: ["fields": "name,desc"])
     }
     
     static func allListsForBoard(boardid boardid: String) -> NSURL {
         return trelloURL(method: "boards/\(boardid)/lists",
-                         parameters: [:])
+                         parameters: ["fields": "name,desc"])
     }
     
     static func allCardsForList(listid listid: String) -> NSURL {
         return trelloURL(method: "lists/\(listid)/cards",
+                         parameters: ["fields": "name,desc"])
+    }
+    
+    static func createCard (listid listid: String, name: String, desc: String) -> NSURL {
+        return trelloURL(method: "cards/",
+                         parameters: ["name":name,"desc":desc,"idList":listid])
+    }
+    
+    static func deleteCard (cardid cardid: String) -> NSURL {
+        return trelloURL(method: "cards/" + cardid,
                          parameters: [:])
     }
     
-    static func createCard (cardid cardid: String, name: String, desc: String) -> NSURL {
-        return trelloURL(method: "",
-                         parameters: [:])
-    }
-    
-    static func removeCard (boardid boardid: String, listid: String, cardid: String) -> NSURL {
-        return trelloURL(method: "",
-                         parameters: [:])
-    }
-    
-    static func editCard (boardid boardid: String, listid: String, cardid: String, name: String, desc: String) -> NSURL {
-        return trelloURL(method: "",
-                         parameters: [:])
+    static func editCard (cardid cardid: String, name: String, desc: String) -> NSURL {
+        return trelloURL(method: "cards/" + cardid,
+                         parameters: ["name":name,"desc":desc])
     }
     
     static func moveCard (boardid boardid: String, oldlistid: String, newlistid: String, cardid: String) -> NSURL {
@@ -207,7 +235,7 @@ struct TrelloAPI {
         return List(id: id, name: name)
     }
     
-    static func cardsFromJSONData(data: NSData) -> CardResult {
+    static func cardsFromJSONData(data: NSData) -> CardsResult {
         do {
             let jsonObject: AnyObject
                 = try NSJSONSerialization.JSONObjectWithData(data, options: [])
@@ -232,6 +260,31 @@ struct TrelloAPI {
                 return .Failure(TrelloError.InvalidJSONData)
             }
             return .Success(finalCards)
+        }
+        catch let error {
+            return .Failure(error)
+        }
+    }
+    
+    static func cardFromJSONData(data: NSData) -> CardResult {
+        do {
+            let jsonObject: AnyObject
+                = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            
+            guard let
+                singlecard = jsonObject as? [String:AnyObject] else {
+                    
+                    // The JSON structure doesn't match our expectations
+                    return .Failure(TrelloError.InvalidJSONData)
+            }
+            
+            if let card = cardFromJSONObject(singlecard){
+                // We weren't able to parse any of the cards
+                // Maybe the JSON format for cards has changed
+                return .Success(card)
+            }
+            
+            return .Failure(TrelloError.InvalidJSONData)
         }
         catch let error {
             return .Failure(error)

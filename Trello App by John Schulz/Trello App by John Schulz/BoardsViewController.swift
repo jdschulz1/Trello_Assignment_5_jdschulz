@@ -21,6 +21,7 @@ class BoardsViewController: UICollectionViewController {
     func getBoards(completion completion: (BoardResult) -> Void) {
         let url = TrelloAPI.allBoardsURL()
         let request = NSURLRequest(URL: url)
+        
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) -> Void in
             
