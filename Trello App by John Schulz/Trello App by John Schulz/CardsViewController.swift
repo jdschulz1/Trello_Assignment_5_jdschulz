@@ -52,7 +52,7 @@ class CardsViewController: UICollectionViewController {
                     self.cardDataSource.cards = cards
                 case let .Failure(error):
                     self.cardDataSource.cards.removeAll()
-                    print("Error fetching lists: \(error)")
+                    print("Error fetching cards: \(error)")
                 }
                 self.collectionView!.reloadSections(NSIndexSet(index: 0))
             }
@@ -74,17 +74,19 @@ class CardsViewController: UICollectionViewController {
             cardEditViewController.data.id = editcard.id
             cardEditViewController.data.newdesc = editcard.desc
             cardEditViewController.data.newname = editcard.name
+            cardEditViewController.data.idList = self.listid
         }
         if segue.identifier == "ShowCardCreate" {
             let cardCreateViewController = segue.destinationViewController as! CardCreateViewController
             self.createdata = cardCreateViewController.data
             cardCreateViewController.data.cardDataSource = self.cardDataSource
+            cardCreateViewController.data.listid = self.listid
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.collectionView?.reloadData()
+        self.collectionView?.setNeedsDisplay()
     }
 }

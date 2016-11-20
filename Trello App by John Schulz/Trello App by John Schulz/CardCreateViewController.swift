@@ -26,8 +26,33 @@ class CardCreateViewController: UIViewController{
         return NSURLSession(configuration: config)
     }()
     
-    func createCard(listid listid: String, name: String, desc: String, completion: (CardResult) -> Void) {
-        let url = TrelloAPI.createCard(listid: listid, name: name, desc: desc)
+    func createCard(listid listid: String, name: String, desc: String, idx: String, completion: (CardResult) -> Void) {
+        
+        var url: NSURL!
+        if let index = Int(idx) as Int!
+        {
+            self.data.idx = String(index)
+            if index > 0 {
+                url = TrelloAPI.createCard(listid: listid, name: name, desc: desc,idx: String(index))
+            }
+            else {
+                url = TrelloAPI.createCard(listid: listid, name: name, desc: desc,idx: "top")
+            }
+        }
+        else
+        {
+            var index: String!
+            if (idx == "bottom") || (idx == "top") {
+                index = idx
+            }
+            else {
+                index = "bottom"
+            }
+            self.data.idx = index
+            
+            url = TrelloAPI.createCard(listid: listid, name: name, desc: desc, idx: index)
+        }
+        
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         let task = session.dataTaskWithRequest(request) {
@@ -40,14 +65,31 @@ class CardCreateViewController: UIViewController{
     }
     
     override func viewWillDisappear(animated: Bool) {
-        createCard(listid: data.listid, name: nameedit.text ?? "", desc: descedit.text ?? "") {
+        if let idx = self.idxedit.text {
+            self.data.idx = idx
+        }
+        else {
+            self.data.idx = "bottom"
+        }
+        
+        createCard(listid: data.listid, name: nameedit.text ?? "", desc: descedit.text ?? "", idx: self.data.idx) {
             (cardResult) -> Void in
+            
             
             NSOperationQueue.mainQueue().addOperationWithBlock() {
                 switch cardResult {
                 case let .Success(card):
                     print("Successfully created Card# \(card.id) to be named \(card.name) with a description of \(card.desc)")
-                    self.data.cardDataSource.cards.insert(card, atIndex: Int(self.idxedit.text!)!)
+                    if self.data.idx == "top" {
+                        self.data.cardDataSource.cards.insert(card, atIndex: 1)
+                    }
+                    else if let index = Int(self.data.idx) as Int!
+                    {
+                        self.data.cardDataSource.cards.insert(card, atIndex: index)
+                    }
+                    else {
+                        self.data.cardDataSource.cards.insert(card, atIndex: self.data.cardDataSource.cards.count)
+                    }
                 case let .Failure(error):
                     print("Error creating card: \(error)")
                 }
@@ -59,4 +101,5 @@ class CardCreateViewController: UIViewController{
 class CreatedCardData {
     var listid: String!
     var cardDataSource: CardDataSource!
+    var idx: String!
 }

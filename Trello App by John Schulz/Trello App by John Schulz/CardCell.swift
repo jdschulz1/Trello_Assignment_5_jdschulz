@@ -11,6 +11,8 @@ import UIKit
 class CardCell: UICollectionViewCell {
     @IBOutlet var cardname: UILabel!
     @IBOutlet var carddesc: UILabel!
+    @IBOutlet var addcard: UIBarButtonItem!
+    @IBOutlet var editcard: UIBarButtonItem!
     
     func updateCard(name: String?, desc: String?) {
         if let cname = name{

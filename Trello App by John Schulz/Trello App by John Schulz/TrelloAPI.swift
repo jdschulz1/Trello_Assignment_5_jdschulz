@@ -60,6 +60,14 @@ func processEditCardRequest(data data: NSData?, error: NSError?) -> CardResult {
     return TrelloAPI.cardFromJSONData(jsonData)
 }
 
+func processMoveCardRequest(data data: NSData?, error: NSError?) -> CardResult {
+    guard let jsonData = data else {
+        return .Failure(error!)
+    }
+    
+    return TrelloAPI.cardFromJSONData(jsonData)
+}
+
 func processDeleteCardRequest(data data: NSData?, error: NSError?) -> CardResult {
     guard let jsonData = data else {
         return .Failure(error!)
@@ -125,12 +133,17 @@ struct TrelloAPI {
     
     static func allCardsForList(listid listid: String) -> NSURL {
         return trelloURL(method: "lists/\(listid)/cards",
-                         parameters: ["fields": "name,desc"])
+                         parameters: ["fields": "name,desc,idList,pos"])
     }
     
-    static func createCard (listid listid: String, name: String, desc: String) -> NSURL {
+    static func createCard (listid listid: String, name: String, desc: String, idx: String) -> NSURL {
         return trelloURL(method: "cards/",
-                         parameters: ["name":name,"desc":desc,"idList":listid])
+                         parameters: ["name":name,"desc":desc,"idList":listid,"pos":idx])
+    }
+    
+    static func moveCard (listid listid: String, cardid: String, name: String, desc: String, idx: String) -> NSURL {
+        return trelloURL(method: "cards/" + cardid,
+                         parameters: ["name":name,"desc":desc,"idList":listid,"pos":idx])
     }
     
     static func deleteCard (cardid cardid: String) -> NSURL {
@@ -143,9 +156,9 @@ struct TrelloAPI {
                          parameters: ["name":name,"desc":desc])
     }
     
-    static func moveCard (boardid boardid: String, oldlistid: String, newlistid: String, cardid: String) -> NSURL {
-        return trelloURL(method: "",
-                         parameters: [:])
+    static func editCard (cardid cardid: String, name: String, desc: String, loc: String) -> NSURL {
+        return trelloURL(method: "cards/" + cardid,
+                         parameters: ["name":name,"desc":desc, "idList":loc])
     }
     
     static func boardsFromJSONData(data: NSData) -> BoardResult {
